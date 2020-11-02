@@ -1,0 +1,109 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/background.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}">
+    <link rel="shotcut icon" href="{% static 'image/justnote.png' %}" sizes="152 x 152">
+    <link rel="stylesheet" href="Home.css">
+    <title>JustNote | Note - {% if flag %} Create {% else %} Update {% endif %}</title>
+    <link rel="stylesheet" href="{% static 'css/firstpage.css' %}">
+    <style>
+
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById('loader').style.display = "none";
+            document.getElementById('content').style.display = "block";
+
+        }
+    </script>
+
+</head>
+
+<body style="background-color: #354152;">
+    <div id="loader">
+        <img class="container" src="{% static 'image/g2.gif' %}" alt="">
+    </div>
+
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg  bg-dark  ">
+
+
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <a class="navbar btn btn-outline-warning my-2 my-sm-0" href="{% url 'home_user' %}"> <b>jUSTNOTE</b></a>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                <button type="navbar-toggler" class="btn btn-outline-warning rs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                      </svg>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item  btn-outline-warning my-2 my-sm-0" href="{% url 'para' user.id %}">Note</a>
+                    <a class="dropdown-item  btn-outline-warning my-2 my-sm-0" href="{% url 'checkbox' user.id %}">Todo</a>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" a-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+                <li class="nav-item active">
+                        
+                    <a class="nav-link  btn-outline-warning my-2 my-sm-0" href=""> HELLO, {{user}}!  <span
+                        class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link  btn-outline-warning my-2 my-sm-0" href="{% url 'logout' %}">Logout</a> <span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+        </div>
+
+    </nav>
+
+    <div id="toolbar" style="text-align: center; margin-top:10px;">
+        <a href="{% url 'create' user.id %}"> <button class="save btn btn-outline-warning my-2 my-sm-0" type="button" name="B1" title="New" onclick="New()" style="width: 200px;">New</button></a>     
+    </div>
+    <br>
+    <form action=" {% if flag %} {% url 'create' user.id %} {% else %} {% url 'update' post_id %} {% endif %}" method="POST" >
+        {% csrf_token %}
+        <div>
+        
+            <tbody>
+                <tr style="display:none">
+                    <td ><h1 style="color: aliceblue;">Enter Your Title:</h1></td>
+                    <td><div></div>{{form.title}}
+                    <td><input class="btn btn-outline-warning my-2 my-sm-0" type="submit" id="save" name="save" value="{% if flag %} Save {% else %} Update {% endif %}" style="padding:5px 10px 5px 10px; margin:0px"></td>                   
+                </tr>
+            </tbody>
+        </div>
+        <br>
+    
+        <!-- notebox -->
+        <div id="editable_text_box">
+            {{form.content}}
+        </div>
+    </form>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous ">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js " integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN " crossorigin="anonymous ">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js " integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV " crossorigin="anonymous ">
+</script>

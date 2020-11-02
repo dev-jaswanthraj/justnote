@@ -1,0 +1,144 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/background.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}">
+    <link rel="shotcut icon" href="{% static 'image/justnote.png' %}" sizes="152 x 152">
+    <link rel="stylesheet" href="{% static 'css/firstpage.css' %}">
+    <title>justNote | Home</title>
+    <style>
+
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById('loader').style.display = "none";
+            document.getElementById('content').style.display = "block";
+
+        }
+    </script>
+
+</head>
+
+<body style="background-color: #354152;">
+    <div id="loader">
+        <img class="container" src="{% static 'image/g2.gif' %}" alt="">
+    </div>
+
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg  bg-dark  ">
+
+
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <a class="navbar btn btn-outline-warning my-2 my-sm-0" href="{% url 'home_user' %}"> <b>jUSTNOTE</b></a>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                <button type="navbar-toggler navbar-dark" class="btn btn-outline-warning rs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                      </svg>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item  btn-outline-warning my-2 my-sm-0" href="{% url 'para' user.id %}">Note</a>
+                    <a class="dropdown-item  btn-outline-warning my-2 my-sm-0" href="{% url 'checkbox' user.id %}">Todo</a>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" a-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+
+                <li class="nav-item active">
+                        
+                    <a class="nav-link  btn-outline-warning my-2 my-sm-0" href="#"> HELLO, {{user}}!  <span
+                        class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link  btn-outline-warning my-2 my-sm-0" href="{% url 'logout' %}">Logout</a> <span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+        </div>
+
+    </nav>
+    <br><br>
+
+    <div class="d-flex justify-content-around">
+        <form action="{% url 'search' %}" method="POST">
+            {% csrf_token %}
+            <input class=" search1 " type="search" placeholder="Type Here to Search" name="item" autocomplete="off">
+            <div class="d-flex justify-content-around" style="margin-top: 10px;">
+                <input class="ser btn btn-outline-warning " type="submit" value=" Search ">
+            </div>
+        </form>
+    </div>
+    {% if search_flag %}
+        <h2 style="color:rgb(255, 174, 0); text-align:center;" >Note</h2> 
+        {% if not Note %}
+            <h4 style="color:rgb(255, 174, 0); text-align:center;">oops!!! Not Found</h4>
+        {% else %}
+            {% for note in Note %}
+                <a href="{% url 'post_view' note.id %}" style="color:rgb(255, 174, 0);"><h3 style="color:rgb(233, 230, 225); text-align:center;">{{note}}</h3></a>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+    <hr style=" width: 340px; background-color: rgb(255, 174, 0) ; height:3px;">
+    <h1 style="color:rgb(255, 174, 0); text-align:center;">Top 5 Todo List:</h1>
+    <ul style="list-style-type: none; text-align:center;">
+        {% if top_five %} {% for todo in top_five %}
+        <li>
+            <form action="{% url 'todo_done' todo.id %}" method="POST">
+                {% csrf_token %}
+                <span style="color:rgb(255, 174, 0); ">
+                    <label style="text-align: center; text-transform: uppercase;" class="btn btn-outline-light
+                    my-2 my-sm-0">{{ todo.content }}</label>
+                </span>
+                <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">Done</button>
+            </form>
+        </li>
+        <br> {% endfor %} {% else %}
+        <h1 style="color: rgba(240, 248, 255, 0.726); text-align:center;">Empty!! Add Your Todo List!</h1>
+        {% endif %}
+    </ul>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer" style="background-color:  #354152; text-align:center; ">
+            <div class="inner-footer ">
+                <p style="color:aliceblue; ">© 2009 - 2020 by JustNote . All Rights
+                    <a href=" ">Copyright</a> | <a href=" ">Terms of Use &amp; Privacy Policy</a></p>
+                <p style="color:aliceblue ">Contact us: <span class="mx-green mx-bold ">info.india<span class="mx-none ">@</span>justNote.com</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+     <!-- footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous ">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js " integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN " crossorigin="anonymous ">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js " integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV " crossorigin="anonymous ">
+    </script>
+
+</body>
+
+</html>

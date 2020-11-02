@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.iconDetails {
+    margin-left: 2%;
+    float: left;
+    height: 400px;
+    width: 400px;
+}
+
+.cont2 {
+    width: 100%;
+    height: auto;
+    padding: 1%;
+}
+
+.img21 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.free1 {
+    display: block;
+    margin-left: 10%;
+    margin-right: auto;
+    position: absolute;
+    left: 16%;
+}
+#content {
+    display: none;
+}
+
+#loader {
+    width: auto;
+    height: 100vh;
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    z-index: 1;
+
+    margin: -75px 0 0 -75px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    
+}
+.img21 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+

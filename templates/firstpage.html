@@ -1,0 +1,136 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/firstpage.css' %}">
+    <link rel="shotcut icon" href="{% static 'image/justnote.png' %}" sizes="152 x 152">
+    <title>JustNote | Get started! </title>
+    <script>
+        window.onload = function() {
+            document.getElementById('loader').style.display = "none";
+            document.getElementById('content').style.display = "block";
+
+        }
+    </script>
+</head>
+
+
+<body style="background-color: #354152;">
+    
+    <div id="loader">
+        <img class="container" src="{% static 'image/g2.gif' %}" alt="" >
+    </div>
+    
+    <nav class="navbar navbar-expand-lg  bg-dark">
+        <a class="navbar btn btn-outline-warning my-2 my-sm-0" href="{% url 'home' %}"> <b>jUSTNOTE</b></a>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" a-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        
+        <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+                <li class="nav-item active">
+                    <a class="nav-link  btn-outline-warning my-2 my-sm-0" href="{% url 'login' %}">Login <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link  btn-outline-warning my-2 my-sm-0" href="{% url 'signup' %}">Signin <span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+        </div>
+
+    </nav>
+
+    <div style="text-align: center;">
+        <br>
+        <h1 style="color:rgb(247, 161, 3) ;" class="font-weight-light">Free Note Taking app</h1>
+        <br>
+        <p style="color:rgb(247, 161, 3) " class="font-italic">Always plan ahead.It wasn't raining when Noah built the ark.</p>
+        <br>
+        <a href="{% url 'signup' %}"><button class="btn btn-warning">GET STARTED - IT'S FREE!</button></a>
+    </div>
+    <br>
+    <br>
+
+    <div>
+        <img class=" img21 container-sm" src="{% static 'image/n1.png' %}" alt="">
+    </div>
+
+    <div class="container-sm">
+        <h4 style="color: rgb(247, 161, 3);">Step:1</h4>
+        <ul>
+            <li style="color: rgb(247, 161, 3);">Create justNote Account</li>
+        </ul>
+        <h4 style="color: rgb(247, 161, 3);">Step:2</h4>
+        <ul>
+            <li style="color: rgb(247, 161, 3);">Click on Type button on the top</li>
+            <li style="color: rgb(247, 161, 3);">Choose which type of note you want</li>
+            <h4 style="color: rgb(247, 161, 3);">paragraph</h4>
+
+            <ul>
+                <li style="color: rgb(247, 161, 3);">Click on paragraph option</li>
+                <li style="color: rgb(247, 161, 3);">Write your important notes on paragraph-check anytime or any device by login option</li>
+            </ul>
+            <h4 style="color: rgb(247, 161, 3);">TODO</h4>
+
+            <ul>
+                <li style="color: rgb(247, 161, 3);">Click on TODO option</li>
+                <li style="color: rgb(247, 161, 3);">Write your daily task on the top of the box and click "Add" button After completing click on "Done" Button </li>
+                <li style="color: rgb(247, 161, 3);">Plan your day in a simple click</li>
+
+            </ul>
+
+
+        </ul>
+        <h4 style="color: rgb(247, 161, 3);">Step:3</h4>
+        <ul>
+            <li style="color: rgb(247, 161, 3);">Search your Note  by simple clicking on "Search Box" Home</li>
+        </ul>
+    </div>
+
+    <br><br>
+    <div>
+        <img class=" img21 container-sm" src="{% static 'image/n33.png' %}" alt="">
+    </div>
+
+    <br>
+    <div style="text-align: center;">
+
+        <a href="{% url 'signup' %}"><button class="btn btn-warning">GET STARTED - IT'S FREE!</button></a>
+    </div><br><br><br>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer" style="background-color: #354152; text-align:center;">
+            <div class="inner-footer">
+                <p style="color:aliceblue; ">© 2009 - 2020 by JustNote . All Rights
+                    <a href="">Copyright</a> | <a href="">Terms of Use &amp; Privacy Policy</a></p>
+                <p style="color:aliceblue">Contact us: <span class="mx-green mx-bold">info.india<span class="mx-none">@</span>justNote.com</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+.edittext {
+    background-color: #354152;
+    border: 2px solid rgb(14, 248, 34);
+}
+
+.save {
+    background-color: #354152;
+}
+
+.colorwhite {
+    color: white;
+}
+
+input[type=checkbox] {
+    transform: scale(2);
+    -ms-transform: scale(2);
+    -webkit-transform: scale(2);
+    padding: 15px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.search1 {
+    text-align: center;
+    width: 350px;
+    height: 60px;
+    border: 4px solid rgb(236, 154, 2);
+}
+
+.ser {
+    text-align: center;
+    width: 100px;
+    height: 40px;
+}
+
+.tin {
+    width: 0px;
+    padding-right: 200px;
+}
+
+.rs {
+    border-radius: 10%;
+    border-bottom-left-radius: 40%;
+}
